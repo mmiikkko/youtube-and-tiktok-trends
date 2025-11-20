@@ -1,9 +1,9 @@
+#--FOR SOP3--
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 
 df = pd.read_csv(r"C:/Users/jaece/dataset-files/cleaned_youtube_tiktok_trends.csv")
-
 
 # Trend Behavior Differences by Region (Velocity & Duration)
 regional_trend_stats = df.groupby(["platform", "country"]).agg({

@@ -1,13 +1,12 @@
+#--FOR SOP1--
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 
 df = pd.read_csv(r"C:/Users/jaece/dataset-files/cleaned_youtube_tiktok_trends.csv")
 
-# --------------------------------------------------------
-# 1. CONTENT CHARACTERISTICS
-# --------------------------------------------------------
 
+# CONTENT CHARACTERISTICS
 content_stats = df.groupby('platform').agg({
     'duration_sec': ['mean', 'median'],
     'views': ['mean', 'median'],
@@ -27,10 +26,7 @@ print("\n=== CONTENT & ENGAGEMENT CHARACTERISTICS BY PLATFORM ===")
 print(content_stats)
 
 
-# --------------------------------------------------------
-# 2. CREATOR ACTIVITY (creator_tier)
-# --------------------------------------------------------
-
+# CREATOR ACTIVITY (creator_tier)
 if 'creator_tier' in df.columns:
     creator_stats = df.groupby(['platform', 'creator_tier']).agg({
         'views': ['mean', 'median'],
@@ -45,9 +41,8 @@ if 'creator_tier' in df.columns:
     print(creator_stats)
 
 
-# --------------------------------------------------------
-# 3. PLATFORM DYNAMICS: Engagement & Duration
-# --------------------------------------------------------
+
+# PLATFORM DYNAMICS: Engagement & Duration
 
 plt.figure(figsize=(8,5))
 sns.barplot(data=df, x='platform', y='engagement_rate')
@@ -60,10 +55,7 @@ plt.title("Average Video Duration by Platform")
 plt.show()
 
 
-# --------------------------------------------------------
-# 4. TREND BEHAVIOR (velocity, duration)
-# --------------------------------------------------------
-
+# TREND BEHAVIOR (velocity, duration)
 plt.figure(figsize=(8,5))
 sns.barplot(data=df, x='platform', y='engagement_velocity')
 plt.title("Engagement Velocity by Platform")
@@ -74,11 +66,7 @@ sns.boxplot(data=df, x='platform', y='trend_duration_days')
 plt.title("Trend Duration Across Platforms")
 plt.show()
 
-
-# --------------------------------------------------------
-# 5. CONTENT TYPES (sound, category)
-# --------------------------------------------------------
-
+# CONTENT TYPES (sound, category)
 plt.figure(figsize=(8,5))
 sns.countplot(data=df, x='platform', hue='sound_type')
 plt.title("Sound Type Usage by Platform")
@@ -89,21 +77,13 @@ sns.countplot(data=df, x='platform', hue='category')
 plt.title("Category Distribution by Platform")
 plt.show()
 
-
-# --------------------------------------------------------
-# 6. CREATOR TIER DISTRIBUTION
-# --------------------------------------------------------
-
+# CREATOR TIER DISTRIBUTION
 plt.figure(figsize=(8,5))
 sns.countplot(data=df, x='platform', hue='creator_tier')
 plt.title("Creator Tier Distribution by Platform")
 plt.show()
 
-
-# --------------------------------------------------------
-# 7. VIEWER BEHAVIOR (watch time, completion)
-# --------------------------------------------------------
-
+# VIEWER BEHAVIOR (watch time, completion)
 plt.figure(figsize=(8,5))
 sns.barplot(data=df, x='platform', y='avg_watch_time_sec')
 plt.title("Average Watch Time by Platform")
@@ -114,11 +94,7 @@ sns.barplot(data=df, x='platform', y='completion_rate')
 plt.title("Completion Rate by Platform")
 plt.show()
 
-
-# --------------------------------------------------------
-# 8. POSTING PATTERNS (hour, day)
-# --------------------------------------------------------
-
+# POSTING PATTERNS (hour, day)
 plt.figure(figsize=(8,5))
 sns.boxplot(data=df, x='platform', y='upload_hour')
 plt.title("Upload Hour Distribution by Platform")
