@@ -9,6 +9,10 @@ print("🔍 VALIDATING CLEANED DATASET...")
 print(f"Loaded file: {cleaned_path}")
 print(f"Total Rows: {len(df)}, Columns: {len(df.columns)}\n")
 
+# Show all attribute names in paragraph format
+attributes = ", ".join(df.columns)
+print(f"📌 Dataset Attributes:\n{attributes}\n")
+
 # Check for missing values
 missing = df.isnull().sum()
 if missing.any():

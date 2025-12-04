@@ -56,20 +56,9 @@ plt.tight_layout()
 plt.show()
 
 
-# ------------------------------------------------------------
-# 3. CATEGORY PREFERENCES BY REGION
-# ------------------------------------------------------------
-
-plt.figure(figsize=(12,6))
-sns.countplot(data=df, x="country", hue="category")
-plt.title("Category Distribution by Country")
-plt.xticks(rotation=45)
-plt.tight_layout()
-plt.show()
-
 
 # ------------------------------------------------------------
-# 4. LANGUAGE vs WATCH-TIME + COMPLETION
+# 3. LANGUAGE vs WATCH-TIME + COMPLETION
 # ------------------------------------------------------------
 
 plt.figure(figsize=(10,6))
@@ -79,16 +68,10 @@ plt.xticks(rotation=45)
 plt.tight_layout()
 plt.show()
 
-plt.figure(figsize=(10,6))
-sns.barplot(data=df, x="language", y="completion_rate", hue="platform")
-plt.title("Completion Rate by Language and Platform")
-plt.xticks(rotation=45)
-plt.tight_layout()
-plt.show()
 
 
 # ------------------------------------------------------------
-# 5. REGIONAL POSTING PATTERNS (Upload hour)
+# 4. REGIONAL POSTING PATTERNS (Upload hour)
 # ------------------------------------------------------------
 
 plt.figure(figsize=(12,6))
@@ -100,7 +83,7 @@ plt.show()
 
 
 # ------------------------------------------------------------
-# 6. SUMMARY TABLE (language + region combined)
+# 5. SUMMARY TABLE (language + region combined)
 # ------------------------------------------------------------
 
 combined_stats = df.groupby(["platform", "language", "country"]).agg({
